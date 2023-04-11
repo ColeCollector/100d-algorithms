@@ -15,7 +15,26 @@ def next(current , myList):
   determine the next item from the list. The list contains False/True Boolean values
   that indicate whether the current item can be used
   '''
-  return None
+
+  if True not in myList:
+    return None
+  
+  if current != 6:
+    current = current + 1
+
+  else:
+    current = 0
+
+
+  while myList[current] == False:
+    if current == len(myList) - 1:
+      current = -1
+    current = current + 1
+    
+  
+  if myList[current] == True:
+    return current 
+
 
 def main():
   data = [False, True, True, False, True, False]
@@ -40,5 +59,5 @@ def main():
   
   
 
-if __name__ == "__main__:
+if __name__ == "__main__":
   main()

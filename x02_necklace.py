@@ -15,7 +15,31 @@ def necklace(a,b):
   return
   str necklace number
   """
-  return None
+  z = a+b
+  x = str(a)
+  y = str(b)
+  necknum = x+y
+
+  while len(necknum) < 50:
+    digi = [int(i) for i in str(necknum)]
+    length = len(necknum)
+    lastdig = int(necknum[length-1])
+    seclastdig = int(necknum[length-2])
+
+    if lastdig == b and seclastdig == a and len(necknum) != 2:
+      break
+    
+    z = lastdig + seclastdig
+    if z >= 10:
+      digi = [int(i) for i in str(z)]
+      zdigit1 = digi[0]
+      zdigit2 = digi[1]
+      zdigits = str(zdigit1 + zdigit2)
+      necknum = necknum+zdigits
+    else:
+      necknum = necknum+(str(z))
+    
+  return necknum
 
 def main():
   assert necklace(9,4) == "94483257314595516742685494"

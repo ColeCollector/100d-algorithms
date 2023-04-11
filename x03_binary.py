@@ -11,8 +11,8 @@ def toBinary(value):
   input: value (int)
   return : list of values
   '''
-  
-  return None
+  print(value)
+  return value
 
 def toDecimal(myList):
   '''
