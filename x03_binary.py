@@ -5,14 +5,33 @@ Create a function that takes an integer value from 0-255 and
 converts it into a list.  Each element is equal to the power
 of 2 that corresponds to that place value
 """
-
+import itertools
 def toBinary(value):
   '''
   input: value (int)
   return : list of values
   '''
-  print(value)
-  return value
+  numbers = [0,1,2,4,8,16,32,64,128]
+  target = value
+
+  result = [combo for i in range(len(numbers), 0, -1)
+    for combo in itertools.combinations(numbers, i)
+    if sum(combo) == target]
+
+  result = result[0]
+  length = len(result) - 1
+  num1 = result[length]
+
+  if num1 == 0:
+    return [0,0,0,0,0,0,0,0]
+
+
+  eight = numbers.index(num1)
+  newList = [0,0,0,0,0,0,0,0]
+  newList.insert(eight,1)
+  print(newList)
+  print(eight)
+  return newList
 
 def toDecimal(myList):
   '''
