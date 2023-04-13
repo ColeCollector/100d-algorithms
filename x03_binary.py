@@ -11,35 +11,39 @@ def toBinary(value):
   input: value (int)
   return : list of values
   '''
-  numbers = [0,1,2,4,8,16,32,64,128]
-  target = value
+  numbers = [128,64,32,16,8,4,2,1]
+  binary = []
+  
+  for i in range (0,8):
+    if value >= numbers[i]:
+      binary.append(1)
+      value = value - numbers[i]
 
-  result = [combo for i in range(len(numbers), 0, -1)
-    for combo in itertools.combinations(numbers, i)
-    if sum(combo) == target]
+    else:
+      binary.append(0)
 
-  result = result[0]
-  length = len(result) - 1
-  num1 = result[length]
-
-  if num1 == 0:
-    return [0,0,0,0,0,0,0,0]
-
-
-  eight = numbers.index(num1)
-  newList = [0,0,0,0,0,0,0,0]
-  newList.insert(eight,1)
-  print(newList)
-  print(eight)
-  return newList
-
+    if len(binary) > 8:
+      break
+  
+  binary.reverse()
+  return binary
+  
 def toDecimal(myList):
   '''
   input: list of values
   return int
   convert binary to decimal
   '''
-  return None
+
+  myList.reverse()
+  numbers = [128,64,32,16,8,4,2,1]
+  total = 0
+
+  for i in range(0,8):
+    if myList[i] == 1:
+      total = total + numbers[i]
+    
+  return total
 
 def problem1():
   assert toBinary(0) == [0,0,0,0,0,0,0,0]
